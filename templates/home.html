@@ -100,7 +100,26 @@
 
       </section>
       <!--Section: Products v.3-->
-
+       <script>
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: "view_item_list",
+          ecommerce: {
+            item_list_name: "Home Page Products",
+            items: [
+              {% for item in object_list %}
+              {
+                item_name: "{{ item.title|escapejs }}",
+                item_id: "{{ item.id }}",
+                price: "{{ item.price }}",
+                item_category: "{{ item.get_category_display|escapejs }}",
+                currency: "BDT"
+              }{% if not forloop.last %},{% endif %}
+              {% endfor %}
+            ]
+          }
+        });
+      </script>
       <!--Pagination-->
 
       {% if is_paginated %}

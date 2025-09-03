@@ -121,5 +121,21 @@
 
     </div>
   </main>
+<!-- ✅ GA4 DataLayer Push (Product View) -->
+<script>
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({
+  event: "view_item",
+  ecommerce: {
+    items: [{
+      item_name: "{{ object.title }}",   // product title
+      item_id: "{{ object.id }}",        // unique product id
+      price: "{{ object.price }}",       // product price
+      item_category: "{{ object.get_category_display }}", // category
+      currency: "BDT"
+    }]
+  }
+});
+</script>
 
 {% endblock content %}
